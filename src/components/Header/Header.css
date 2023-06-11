@@ -54,30 +54,6 @@
     height: 14px;
 }
 
-.header__navbar {
-    display: flex;
-    justify-content: space-between;
-}
-
-.header__nav-text {
-    color: inherit;
-    text-decoration: none;
-    cursor: pointer;
-    margin-left: 16px;
-    font-weight: 400;
-    font-size: 13px;
-    line-height: 18px;
-    transition: opacity ease-in-out 0.2s;
-}
-
-.header__nav-text:hover {
-    opacity: .7;
-}
-
-.header__nav-text_active {
-    font-weight: 500;
-}
-
 .header__link {
     font-weight: 500;
     font-size: 12px;

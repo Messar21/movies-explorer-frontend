@@ -1,19 +1,17 @@
 import logo from "../../images/logo.png";
 import {Link} from "react-router-dom";
 import accountIcon from "../../images/accountIcon.svg";
+import Navigation from "../Navigation/Navigation";
 function Header() {
 
-    const isLogged = false;
+    const isLogged = true;
 
     return (
         <header className="header">
             <Link to="/" className="header__home">
                 <img className="header__logo" src={logo} alt="Логотип"/>
             </Link>
-            { isLogged && <nav className="header__navbar">
-                <Link to="/movies" className="header__nav-text header__nav-text_active">Фильмы</Link>
-                <Link to="/saved-movies" className="header__nav-text">Сохранённые фильмы</Link>
-            </nav> }
+            { isLogged && <Navigation/> }
             { isLogged &&
                 <Link to="/profile" className="header__button-account">
                     <img className="header__button-icon" src={accountIcon} alt="Иконка профиля"/>

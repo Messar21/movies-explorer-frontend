@@ -1,0 +1,62 @@
+.about-me {
+    margin: 10px 70px 0;
+}
+
+.about-me__container {
+    display: grid;
+    grid-template:
+    "p photo" 58px
+    "p photo" 38px
+    "p photo" 187px
+    "link photo" 1fr;
+    margin-top: 66px;
+}
+
+.about-me__photo {
+    grid-area: photo;
+    margin-left: 49px;
+    max-width: 270px;
+    max-height: 327px;
+    border-radius: 10px;
+    justify-self: flex-end;
+}
+
+.about-me__name {
+    margin: 0;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 58px;
+    letter-spacing: -0.04em;
+    max-width: 600px;
+}
+
+.about-me__status {
+    margin: 0;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 20px;
+    max-width: 600px;
+    align-self: flex-end;
+}
+
+.about-me__story {
+    margin: 26px 0 0;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    max-width: 600px;
+}
+
+.about-me__link {
+    text-decoration: none;
+    color: inherit;
+    align-self: flex-end;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    transition: opacity ease-in-out 0.2s;
+}
+
+.about-me__link:hover {
+    opacity: .7;
+}

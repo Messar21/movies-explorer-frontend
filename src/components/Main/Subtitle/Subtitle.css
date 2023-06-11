@@ -1,0 +1,9 @@
+.subtitle {
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 27px;
+    letter-spacing: -0.04em;
+    margin: 100px 0 0;
+    height: 50px;
+    border-bottom: #000000 1px solid;
+}

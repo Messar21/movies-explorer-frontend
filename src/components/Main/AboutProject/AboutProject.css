@@ -1,0 +1,84 @@
+.about-project {
+    margin: 10px 70px 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.about-project__about {
+    display: flex;
+    flex-direction: row;
+    margin-top: 70px;
+    justify-content: space-between;
+}
+
+.about-project__article {
+    max-width: 550px;
+}
+
+.about-project__article-title {
+    margin: 0;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: -0.04em;
+}
+
+.about-project__article-text {
+    margin: 26px 0 0;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.about-project__process {
+    margin: 110px 0;
+    display: grid;
+    grid-template:
+    "one-week four-week" 36px
+    "backend frontend" 31px / 1fr 4fr;
+}
+
+.about-project__one-week {
+    grid-area: one-week;
+    margin: 0;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    background: #000000;
+}
+
+.about-project__four-week {
+    grid-area: four-week;
+    margin: 0;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    background: #F2F2F2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.about-project__process-back {
+    grid-area: backend;
+    margin: 14px 0 0;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    color: #A0A0A0;
+}
+
+.about-project__process-front {
+    grid-area: frontend;
+    margin: 14px 0 0;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    color: #A0A0A0;
+}

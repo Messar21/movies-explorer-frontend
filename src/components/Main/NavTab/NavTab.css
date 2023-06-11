@@ -1,0 +1,30 @@
+.nav-tab {
+    justify-self: flex-end;
+    margin-bottom: 30px;
+    display: flex;
+}
+
+.nav-tab__link {
+    width: 96px;
+    height: 36px;
+    background: #E8E8E8;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    margin-right: 10px;
+    transition: opacity ease-in-out 0.2s;
+}
+
+.nav-tab__link:hover {
+    opacity: .7;
+}
+
+.nav-tab__link:last-child {
+    margin-right: 0;
+}

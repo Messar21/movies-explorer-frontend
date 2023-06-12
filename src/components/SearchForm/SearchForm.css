@@ -1,0 +1,81 @@
+.search {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 70px;
+    min-height: 72px;
+    background: #FDFDFD;
+    box-shadow: 0 3px 14px rgba(0, 0, 0, 0.08);
+    border-radius: 9px;
+}
+
+.search__find-icon {
+    width: 22px;
+    height: 22px;
+    margin-left: 25px;
+}
+
+.search__input {
+    padding: 5px 0 5px 5px;
+    border: 0;
+    margin-left: 5px;
+    margin-right: 10px;
+    background-color: #FDFDFD;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 20px;
+    width: 100%;
+}
+
+.search__input::placeholder {
+    color: #A0A0A0;
+}
+
+.search__findBtn {
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 18px;
+    text-align: center;
+    width: 59px;
+    height: 34px;
+    color: #FFFFFF;
+    background: #000000;
+    border-radius: 48px;
+    padding: 0;
+    border: 0;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.search__shorts-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-left: #CBCBCB 1px solid;
+    min-height: 40px;
+    margin-left: 19px;
+    margin-right: 30px;
+}
+
+.search__toggleBtn {
+    padding: 0;
+    border: 0;
+    cursor: pointer;
+    display: flex;
+    margin: 0 14px 0 29px;
+    width: 36px;
+    height: 20px;
+    background: url(../../images/smalltumb.svg) no-repeat center;
+    background-size: contain;
+}
+
+.search__toggleBtn_inactive {
+    background: url(../../images/smalltumboff.svg) no-repeat center;
+}
+
+.search__shorts {
+    margin: 0;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 18px;
+}

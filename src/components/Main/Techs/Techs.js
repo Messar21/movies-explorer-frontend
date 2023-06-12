@@ -2,7 +2,7 @@ import Subtitle from "../Subtitle/Subtitle";
 
 function Techs() {
     return (
-        <section id="1" className="techs">
+        <section id="techs" className="techs">
             <Subtitle text="Технологии" />
             <p className="techs__subtitle">7 технологий</p>
             <p className="techs__about">

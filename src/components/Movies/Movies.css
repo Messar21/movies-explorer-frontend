@@ -1,0 +1,24 @@
+.movies-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.movies-content__loadBtn {
+    margin: 50px auto 80px;
+    border: #E8E8E8 1px solid;
+    border-radius: 6px;
+    background: #FFFFFF;
+    padding: 0;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+    text-align: center;
+    width: 320px;
+    height: 36px;
+    cursor: pointer;
+    transition: opacity ease-in-out 0.2s;
+}
+
+.movies-content__loadBtn:hover {
+    opacity: .7;
+}

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import HomeLink from "../HomeLink/HomeLink";
+import FormBlank from "../FormBlank/FormBlank";
 import FormSection from "../FormSection/FormSection";
-import {Link} from "react-router-dom";
 
 function Register() {
 
@@ -21,33 +20,19 @@ function Register() {
         setPassword(e.target.value);
     }
 
-    function handleSubmit (evt)  {
-        evt.preventDefault();
-    }
-
-
     return (
         <main className="register">
-            <div className="register__container">
-                <HomeLink />
-                <form className="register__form" name="register" onSubmit={ handleSubmit } noValidate>
-                    <h2 className="register__heading">Добро пожаловать!</h2>
-                    <FormSection header="Имя" onChange={handleNameChange} type="text"
-                                 name="name" value={name}
-                                 minLength="2" maxLength="40" id="name-input" />
-                    <FormSection header="E-mail" onChange={handleEmailChange} type="email"
-                                 name="email" value={email} modifier="form-section__input_type_email"
-                                 minLength="2" maxLength="40" id="email-input" />
-                    <FormSection header="Пароль" onChange={handlePasswordChange} type="password"
-                                 name="password" value={password}
-                                 minLength="2" maxLength="200" id="password-input" />
-                    <button className="register__button" type="submit">Зарегистрироваться</button>
-                    <Link to="/signin" className="register__link">
-                            <span className="register__link_type_grey">Уже зарегистрированы?</span>
-                            Войти
-                    </Link>
-                </form>
-            </div>
+            <FormBlank heading="Добро пожаловать!" submit="Зарегистрироваться" linkGrey="Уже зарегистрированы?"
+                       link="Войти" formName="register" linkPath="/signin">
+                <FormSection header="Имя" onChange={handleNameChange} type="text"
+                          name="name" value={name} minLength="2" maxLength="40" id="name-input" />
+                <FormSection header="E-mail" onChange={handleEmailChange} type="email"
+                             name="email" value={email} modifier="form-section__input_type_email"
+                             minLength="2" maxLength="40" id="email-input" />
+                <FormSection header="Пароль" onChange={handlePasswordChange} type="password"
+                             name="password" value={password} modifier="form-section__input_type_error"
+                             minLength="2" maxLength="200" id="password-input" />
+            </FormBlank>
         </main>
     )
 }

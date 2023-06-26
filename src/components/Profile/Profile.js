@@ -1,18 +1,28 @@
+import React, { useState } from "react";
+
 function Profile() {
 
-    const userName = "Антон";
-    const email = "pochta@yandex.ru";
+    const [email, setEmail] = useState('pochta@yandex.ru');
+    const [userName, setName] = useState('Антон');
+
+    function handleNameChange(e) {
+        setName(e.target.value);
+    }
+
+    function handleEmailChange(e) {
+        setEmail(e.target.value);
+    }
 
     return (
         <main className="profile">
             <h2 className="profile__header">Привет, { userName }!</h2>
             <div className="profile__item">
                 <p className="profile__label">Имя</p>
-                <p className="profile__text">{ userName }</p>
+                <input onChange={handleNameChange} className="profile__text" value={userName}/>
             </div>
             <div className="profile__item">
                 <p className="profile__label">E-mail</p>
-                <p className="profile__text">{ email }</p>
+                <input onChange={handleEmailChange} className="profile__text" value={email}/>
             </div>
             <div className="profile__buttons">
                 <button className="profile__button">Редактировать</button>

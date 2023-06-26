@@ -41,6 +41,8 @@
     line-height: 13px;
     text-align: right;
     margin: 0;
+    border: none;
+    padding: 0;
 }
 
 .profile__buttons {

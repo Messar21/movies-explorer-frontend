@@ -14,12 +14,24 @@
     border-radius: 8px;
     background: #F9F9F9;
     width: 100%;
+    max-width: 366px;
     height: 16px;
     padding: 15px;
     font-size: 13px;
     font-weight: 400;
 }
 
+.form-section__input_type_error {
+    color: #FF4062;
+}
+
 .form-section__input_type_email {
     font-weight: 500;
+}
+
+.form-section__error {
+    display: block;
+    font-size: 10px;
+    line-height: 12px;
+    color: #FF4062;
 }

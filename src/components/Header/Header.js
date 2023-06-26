@@ -1,4 +1,3 @@
-import logo from "../../images/logo.png";
 import {Link} from "react-router-dom";
 import accountIcon from "../../images/accountIcon.svg";
 import Navigation from "../Navigation/Navigation";

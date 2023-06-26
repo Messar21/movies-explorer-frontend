@@ -17,7 +17,7 @@ function AboutMe() {
                     Прошёл обучение в Яндекс практикуме по профессии Web-разработчик.
                     Люблю копаться в коде и решать сложные задачи.
                 </p>
-                <Link to="https://github.com/Messar21" className="about-me__link">Github</Link>
+                <Link to="https://github.com/Messar21" target="_blank" className="about-me__link">Github</Link>
             </div>
         </section>
     )

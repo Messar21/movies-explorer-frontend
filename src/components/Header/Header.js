@@ -2,15 +2,14 @@ import logo from "../../images/logo.png";
 import {Link} from "react-router-dom";
 import accountIcon from "../../images/accountIcon.svg";
 import Navigation from "../Navigation/Navigation";
+import HomeLink from "../HomeLink/HomeLink";
 function Header() {
 
     const isLogged = true;
 
     return (
         <header className="header">
-            <Link to="/" className="header__home">
-                <img className="header__logo" src={logo} alt="Логотип"/>
-            </Link>
+            <HomeLink />
             { isLogged && <Navigation/> }
             { isLogged &&
                 <Link to="/profile" className="header__button-account">

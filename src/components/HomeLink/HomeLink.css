@@ -1,0 +1,13 @@
+.home-link {
+    margin-right: auto;
+    transition: opacity ease-in-out 0.2s;
+}
+
+.home-link:hover {
+    opacity: .7;
+}
+
+.home-link__logo {
+    width: 38px;
+    height: 38px;
+}

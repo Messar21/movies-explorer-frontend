@@ -7,3 +7,9 @@
     height: 50px;
     border-bottom: #000000 1px solid;
 }
+
+@media screen and (max-width: 830px) {
+    .subtitle {
+        margin: 90px 0 0;
+    }
+}

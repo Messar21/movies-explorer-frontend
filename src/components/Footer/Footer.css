@@ -39,3 +39,9 @@
 .footer__link:hover {
     opacity: .7;
 }
+
+@media screen and (max-width: 830px) {
+    .footer {
+        margin: 79px 30px 20px;
+    }
+}

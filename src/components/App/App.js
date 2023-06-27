@@ -13,7 +13,7 @@ function App() {
 
     const location = useLocation();
 
-  return (
+    return (
       <div className="App">
           { (location.pathname==="/" || location.pathname==="/movies" || location.pathname==="/saved-movies"
               || location.pathname==="/profile") && <Header/> }

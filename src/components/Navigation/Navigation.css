@@ -21,3 +21,9 @@
 .navbar__text_active {
     font-weight: 500;
 }
+
+@media screen and (max-width: 768px) {
+    .navbar {
+        display: none;
+    }
+}

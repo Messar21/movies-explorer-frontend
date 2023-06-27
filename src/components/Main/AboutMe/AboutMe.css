@@ -5,18 +5,19 @@
 .about-me__container {
     display: grid;
     grid-template:
-    "p photo" 58px
-    "p photo" 38px
-    "p photo" 187px
-    "link photo" 1fr;
+    "p photo" min-content
+    "p photo" min-content
+    "p photo" min-content
+    "link photo" 1fr / 1fr 1fr;
     margin-top: 66px;
+    grid-column-gap: 49px;
 }
 
 .about-me__photo {
     grid-area: photo;
-    margin-left: 49px;
     max-width: 270px;
     max-height: 327px;
+    width: 100%;
     border-radius: 10px;
     justify-self: flex-end;
 }
@@ -31,7 +32,7 @@
 }
 
 .about-me__status {
-    margin: 0;
+    margin: 18px 0 0;
     font-weight: 500;
     font-size: 18px;
     line-height: 20px;
@@ -51,6 +52,7 @@
     text-decoration: none;
     color: inherit;
     align-self: flex-end;
+    margin-top: 20px;
     font-weight: 500;
     font-size: 14px;
     line-height: 17px;
@@ -59,4 +61,25 @@
 
 .about-me__link:hover {
     opacity: .7;
+}
+
+@media screen and (max-width: 830px) {
+    .about-me {
+        margin: 0 50px;
+    }
+    .about-me__name {
+        font-size: 40px;
+        line-height: 40px;
+        letter-spacing: -1.6px;
+    }
+    .about-me__status {
+        margin-top: 16px;
+        font-size: 12px;
+        line-height: 18px;
+    }
+    .about-me__story {
+        margin-top: 20px;
+        font-size: 12px;
+        line-height: 18px;
+    }
 }

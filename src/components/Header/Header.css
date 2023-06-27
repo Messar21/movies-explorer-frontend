@@ -65,3 +65,30 @@
     border-radius: 3px;
     margin-left: 30px;
 }
+
+.header__menu {
+    background: url("../../images/burgerMenu.svg") no-repeat center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+    transition: opacity ease-in-out 0.2s;
+    display: none;
+}
+
+.header__menu:hover {
+    opacity: .7;
+}
+
+@media screen and (max-width: 768px) {
+    .header {
+        margin: 0 30px;
+    }
+    .header__menu {
+        display: block;
+    }
+    .header__button-account {
+        display: none;
+    }
+}

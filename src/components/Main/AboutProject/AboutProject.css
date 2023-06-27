@@ -9,6 +9,7 @@
     flex-direction: row;
     margin-top: 70px;
     justify-content: space-between;
+    gap: 30px;
 }
 
 .about-project__article {
@@ -81,4 +82,18 @@
     line-height: 17px;
     text-align: center;
     color: #A0A0A0;
+}
+
+@media screen and (max-width: 830px) {
+    .about-project {
+        margin: 0 50px;
+    }
+    .about-project__process {
+        margin: 90px 0;
+    }
+    .about-project__article-text {
+        font-size: 12px;
+        line-height: 18px;
+        margin-top: 22px;
+    }
 }

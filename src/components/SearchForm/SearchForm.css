@@ -44,7 +44,12 @@
     padding: 0;
     border: 0;
     cursor: pointer;
+    transition: opacity ease-in 0.2s;
     flex-shrink: 0;
+}
+
+.search__findBtn:hover {
+    opacity: .7;
 }
 
 .search__shorts-container {
@@ -66,6 +71,7 @@
     width: 36px;
     height: 20px;
     background: url(../../images/smalltumb.svg) no-repeat center;
+    transition: background ease-in-out 0.2s;
     background-size: contain;
 }
 

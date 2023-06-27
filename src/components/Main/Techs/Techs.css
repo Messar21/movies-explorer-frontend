@@ -30,6 +30,7 @@
     margin: 100px auto;
     display: flex;
     flex-direction: row;
+    gap: 10px;
     list-style: none;
 }
 
@@ -46,9 +47,27 @@
     border-radius: 10px;
     width: 90px;
     height: 60px;
-    margin-right: 10px;
 }
 
-.techs__list-item:last-child {
-    margin-right: 0;
+@media screen and (max-width: 830px) {
+    .techs {
+        padding: 0 50px;
+    }
+    .techs__subtitle {
+        margin: 80px auto 0;
+    }
+    .techs__about {
+        margin: 22px auto 0;
+        letter-spacing: -0.48px;
+        font-size: 12px;
+        line-height: 18px;
+    }
+    .techs__list {
+        margin: 83px auto 90px;
+        flex-wrap: wrap;
+    }
+    .techs__list-item {
+        width: 84px;
+        height: 57px;
+    }
 }

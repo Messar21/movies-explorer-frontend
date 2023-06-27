@@ -18,11 +18,13 @@ function Profile() {
             <h2 className="profile__header">Привет, { userName }!</h2>
             <div className="profile__item">
                 <p className="profile__label">Имя</p>
-                <input onChange={handleNameChange} className="profile__text" value={userName}/>
+                <input onChange={handleNameChange} placeholder="Имя"
+                       type="text" className="profile__text" value={userName}/>
             </div>
             <div className="profile__item">
                 <p className="profile__label">E-mail</p>
-                <input onChange={handleEmailChange} className="profile__text" value={email}/>
+                <input onChange={handleEmailChange} placeholder="Почта"
+                       type="email" className="profile__text" value={email}/>
             </div>
             <div className="profile__buttons">
                 <button className="profile__button">Редактировать</button>

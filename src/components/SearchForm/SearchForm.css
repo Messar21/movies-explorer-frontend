@@ -85,3 +85,9 @@
     font-size: 13px;
     line-height: 18px;
 }
+
+@media screen and (max-width: 768px) {
+    .search {
+        margin: 80px 30px 109px;
+    }
+}

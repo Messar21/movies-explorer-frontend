@@ -15,8 +15,6 @@
 
 .about-me__photo {
     grid-area: photo;
-    max-width: 270px;
-    max-height: 327px;
     width: 100%;
     border-radius: 10px;
     justify-self: flex-end;
@@ -81,5 +79,37 @@
         margin-top: 20px;
         font-size: 12px;
         line-height: 18px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .about-me__container {
+        margin-top: 60px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+    .about-me__name {
+        margin-top: 40px;
+        font-size: 30px;
+        line-height: 36px;
+        letter-spacing: -1.2px;
+    }
+    .about-me__status {
+        align-self: flex-start;
+        font-size: 11px;
+        line-height: 16px;
+        margin-top: 20px;
+    }
+    .about-me__link {
+        margin-top: 40px;
+        align-self: flex-start;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .about-me {
+        margin: 0 14px;
     }
 }

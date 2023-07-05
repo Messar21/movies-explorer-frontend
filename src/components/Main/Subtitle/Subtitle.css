@@ -13,3 +13,12 @@
         margin: 90px 0 0;
     }
 }
+
+@media screen and (max-width: 425px) {
+    .subtitle {
+        margin-top: 70px;
+        font-size: 18px;
+        line-height: 22px;
+        letter-spacing: -0.72px;
+    }
+}

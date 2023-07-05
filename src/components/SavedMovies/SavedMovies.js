@@ -9,6 +9,7 @@ function SavedMovies() {
         <main className="movies-content">
             <SearchForm />
             <MoviesCardList deleteBtn={deleteBtn} />
+            <div className="movies-content__withoutBtn"></div>
         </main>
     )
 }

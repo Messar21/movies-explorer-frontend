@@ -1,7 +1,6 @@
 .form-blank__container {
     display: flex;
     flex-direction: column;
-    margin: 70px auto;
     max-width: 396px;
     width: 100%;
 }
@@ -68,4 +67,10 @@
 .form-blank__link_type_grey {
     color: #A0A0A0;
     margin-right: 6px;
+}
+
+@media screen and (max-width: 768px) {
+    .form-blank__container {
+        margin: 232px auto;
+    }
 }

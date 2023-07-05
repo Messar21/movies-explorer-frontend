@@ -92,3 +92,17 @@
         display: none;
     }
 }
+
+@media screen and (max-width: 425px) {
+    .header {
+        margin: 0 14px;
+    }
+    .header__link {
+        font-size: 10px;
+    }
+    .header__link_type_login {
+        width: 54px;
+        height: 26px;
+        margin-left: 14px;
+    }
+}

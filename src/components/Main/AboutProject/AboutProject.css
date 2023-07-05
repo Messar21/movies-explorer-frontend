@@ -39,12 +39,15 @@
     "backend frontend" 31px / 1fr 4fr;
 }
 
-.about-project__one-week {
-    grid-area: one-week;
+.about-project__text {
     margin: 0;
     font-weight: 400;
     font-size: 14px;
     line-height: 17px;
+}
+
+.about-project__text_type_one-week {
+    grid-area: one-week;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -52,34 +55,26 @@
     background: #000000;
 }
 
-.about-project__four-week {
+.about-project__text_type_four-week {
     grid-area: four-week;
-    margin: 0;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 17px;
     background: #F2F2F2;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.about-project__process-back {
+.about-project__text_type_back {
     grid-area: backend;
     margin: 14px 0 0;
     font-weight: 500;
-    font-size: 14px;
-    line-height: 17px;
     text-align: center;
     color: #A0A0A0;
 }
 
-.about-project__process-front {
+.about-project__text_type_front {
     grid-area: frontend;
     margin: 14px 0 0;
     font-weight: 500;
-    font-size: 14px;
-    line-height: 17px;
     text-align: center;
     color: #A0A0A0;
 }
@@ -95,5 +90,42 @@
         font-size: 12px;
         line-height: 18px;
         margin-top: 22px;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .about-project {
+        margin: 0 18px;
+    }
+    .about-project__about {
+        margin-top: 60px;
+        flex-direction: column;
+        gap: 56px;
+    }
+    .about-project__article-title {
+        font-size: 18px;
+        line-height: 22px;
+        letter-spacing: -0.72px;
+    }
+    .about-project__article-text {
+        font-size: 11px;
+        line-height: 16px;
+        margin-top: 16px;
+    }
+    .about-project__process {
+        margin: 60px 0 70px;
+        grid-template:
+        "one-week four-week" 36px
+        "backend frontend" 31px / 1fr 2fr;
+    }
+    .about-project__text {
+        font-size: 11px;
+        line-height: 13px;
+    }
+    .about-project__text_type_back {
+        margin-top: 10px;
+    }
+    .about-project__text_type_front {
+        margin-top: 10px;
     }
 }

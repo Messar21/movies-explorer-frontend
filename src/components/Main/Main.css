@@ -4,3 +4,9 @@
     margin: 20px 0 0;
     max-width: 1280px;
 }
+
+@media screen and (max-width: 425px) {
+    .content {
+        margin: 14px 0 0;
+    }
+}

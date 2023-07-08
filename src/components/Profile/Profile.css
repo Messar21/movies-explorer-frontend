@@ -1,8 +1,9 @@
 .profile {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 88vh;
+    height: 90vh;
 }
 
 .profile__container {
@@ -52,7 +53,7 @@
 }
 
 .profile__buttons {
-    margin: 204px auto 0;
+    margin: 204px auto 24px;
     display: flex;
     flex-direction: column;
 }
@@ -84,6 +85,22 @@
     }
     .profile__header {
         margin-bottom: 79px;
+    }
+}
+
+@media screen and (max-width: 470px) {
+    .profile {
+        padding: 0 30px;
+    }
+    .profile__buttons {
+        margin-top: auto;
+    }
+    .profile__header {
+        margin: 70px auto 63px;
+    }
+    .profile__button {
+        font-size: 12px;
+        line-height: 15px;
     }
 }
 

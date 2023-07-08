@@ -104,3 +104,15 @@
     width: 12px;
     height: 14px;
 }
+
+@media screen and (max-width: 425px) {
+    .popup__account-button {
+        margin: auto auto 46px;
+    }
+    .popup__menu-container {
+        margin-top: 99px;
+    }
+    .popup__closeButton {
+        margin: 13px 13px 0 0;
+    }
+}

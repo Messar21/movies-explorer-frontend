@@ -7,6 +7,8 @@ function MoviesCardList({ deleteBtn }) {
                 <MoviesCard deleteBtn={deleteBtn}/>
                 <MoviesCard deleteBtn={deleteBtn}/>
                 <MoviesCard deleteBtn={deleteBtn}/>
+                <MoviesCard deleteBtn={deleteBtn}/>
+                <MoviesCard deleteBtn={deleteBtn}/>
             </ul>
         </section>
     )

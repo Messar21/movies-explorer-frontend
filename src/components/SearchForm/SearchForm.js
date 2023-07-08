@@ -10,9 +10,11 @@ function SearchForm() {
 
     return (
         <div className="search">
-            <img className="search__find-icon" src={searchIcon} alt="Найти"/>
-            <input className="search__input" placeholder="Фильм"/>
-            <button className="search__findBtn">Найти</button>
+            <div className="search__container">
+                <img className="search__find-icon" src={searchIcon} alt="Найти"/>
+                <input className="search__input" placeholder="Фильм"/>
+                <button className="search__findBtn">Найти</button>
+            </div>
             <div className="search__shorts-container">
                 <button className={ toggleBtnState ?
                     "search__toggleBtn" : "search__toggleBtn search__toggleBtn_inactive" }

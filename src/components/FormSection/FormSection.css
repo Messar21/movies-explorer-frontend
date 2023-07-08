@@ -35,3 +35,13 @@
     line-height: 12px;
     color: #FF4062;
 }
+
+@media screen and (max-width: 456px) {
+    .form-section {
+        display: flex;
+        flex-direction: column;
+    }
+    .form-section__input {
+        width: auto;
+    }
+}

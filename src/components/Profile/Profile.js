@@ -27,10 +27,10 @@ function Profile() {
                     <input onChange={handleEmailChange} placeholder="Почта"
                            type="email" className="profile__text" value={email}/>
                 </div>
-                <div className="profile__buttons">
-                    <button className="profile__button">Редактировать</button>
-                    <button className="profile__button profile__button_type_logout">Выйти из аккаунта</button>
-                </div>
+            </div>
+            <div className="profile__buttons">
+                <button className="profile__button">Редактировать</button>
+                <button className="profile__button profile__button_type_logout">Выйти из аккаунта</button>
             </div>
         </main>
     )

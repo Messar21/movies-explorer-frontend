@@ -31,3 +31,9 @@
         margin: 30px auto 140px;
     }
 }
+
+@media screen and (max-width: 425px) {
+    .movies-content__loadBtn {
+        max-width: 240px;
+    }
+}

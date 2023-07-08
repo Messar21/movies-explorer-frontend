@@ -1,6 +1,4 @@
 .movies__card {
-    max-width: 360px;
-    max-height: 319px;
     background: #FDFDFD;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
     border-radius: 6px;
@@ -34,7 +32,6 @@
 }
 
 .movies__image {
-    max-width: 360px;
     max-height: 200px;
     width: 100%;
     object-fit: cover;
@@ -67,4 +64,29 @@
 
 .movies__button_type_delete {
     background: url(../../images/delete-button.svg) no-repeat center #F9F9F9;
+}
+
+@media screen and (max-width: 768px) {
+    .movies__image {
+        max-height: 190px;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .movies__name {
+        font-size: 12px;
+    }
+    .movies__duration {
+        font-size: 10px;
+    }
+    .movies__header {
+        min-height: 46px;
+        margin: 0 14px 0;
+    }
+    .movies__button {
+        margin: 14px auto;
+    }
+    .movies__image {
+        max-height: 168px;
+    }
 }

@@ -6,7 +6,7 @@ import PopupMenu from "../PopupMenu/PopupMenu";
 import {useState} from "react";
 function Header() {
 
-    const isLogged = false;
+    const isLogged = true;
 
     const [isOpen, setIsOpen] = useState(false);
 

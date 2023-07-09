@@ -6,7 +6,7 @@ function SavedMovies() {
     const deleteBtn = true;
 
     return (
-        <main className="movies-content">
+        <main className="movies-content" aria-label="Сохраненные фильмы">
             <SearchForm />
             <MoviesCardList deleteBtn={deleteBtn} />
             <div className="movies-content__withoutBtn"></div>

@@ -1,5 +1,6 @@
 .movies-content {
     display: flex;
+    flex: 1;
     flex-direction: column;
 }
 
@@ -21,6 +22,10 @@
 
 .movies-content__loadBtn:hover {
     opacity: .7;
+}
+
+.movies-content__withoutBtn {
+    margin: 90px auto 140px;
 }
 
 @media screen and (max-width: 768px) {

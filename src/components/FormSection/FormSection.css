@@ -1,5 +1,7 @@
 .form-section {
     width: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .form-section__header {
@@ -37,10 +39,6 @@
 }
 
 @media screen and (max-width: 456px) {
-    .form-section {
-        display: flex;
-        flex-direction: column;
-    }
     .form-section__input {
         width: auto;
     }

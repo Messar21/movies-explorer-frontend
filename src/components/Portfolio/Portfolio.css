@@ -21,9 +21,6 @@
 
 .portfolio__list-item {
     border-bottom: #E8E8E8 1px solid;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
     min-height: 69px;
     transition: opacity ease-in-out 0.2s;
 }
@@ -37,6 +34,9 @@
 }
 
 .portfolio__list-link {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
     font-weight: 400;
     font-size: 30px;
     line-height: 34px;

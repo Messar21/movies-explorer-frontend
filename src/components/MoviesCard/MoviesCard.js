@@ -10,17 +10,17 @@ function MoviesCard({ deleteBtn }) {
     }
 
     return (
-        <li className="movies__card">
-            <div className="movies__header">
-                <h2 className="movies__name">В погоне за Бенкси</h2>
-                <p className="movies__duration">27 минут</p>
+        <li className="card">
+            <div className="card__header">
+                <h2 className="card__name">В погоне за Бенкси</h2>
+                <p className="card__duration">27 минут</p>
             </div>
-            <img className="movies__image" src={image} alt="Обложка фильма"/>
+            <img className="card__image" src={image} alt="Обложка фильма"/>
             { deleteBtn ?
-                <button className="movies__button movies__button_type_delete">
+                <button className="card__button card__button_type_delete" type="button">
                 </button>
-                : <button onClick={handleSaveMovie} className={ saveMovie ?
-                    "movies__button movies__button_type_saved" : "movies__button" }>
+                : <button onClick={handleSaveMovie} type="button" className={ saveMovie ?
+                    "card__button card__button_type_saved" : "card__button" }>
                     { saveMovie ? "" : "Сохранить" }
                 </button>
             }

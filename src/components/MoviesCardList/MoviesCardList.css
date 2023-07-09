@@ -1,10 +1,10 @@
-.movies {
+.card-list {
     margin: 0 70px;
     padding-top: 80px;
     border-top: #E8E8E8 1px solid;
 }
 
-.movies__list {
+.card-list__list {
     list-style: none;
     margin: 0;
     padding: 0;
@@ -17,10 +17,10 @@
 }
 
 @media screen and (max-width: 768px) {
-    .movies {
+    .card-list {
         margin: 0 30px;
     }
-    .movies__list {
+    .card-list__list {
         grid-template-columns: repeat(2, 1fr);
         grid-column-gap: 24px;
         grid-row-gap: 35px;
@@ -28,11 +28,11 @@
 }
 
 @media screen and (max-width: 425px) {
-    .movies {
+    .card-list {
         margin: 0 10px;
         padding-top: 50px;
     }
-    .movies__list {
+    .card-list__list {
         grid-template-columns: repeat(1, 1fr);
         grid-row-gap: 16px;
     }

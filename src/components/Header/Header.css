@@ -4,7 +4,9 @@
     max-width: 1280px;
     min-height: 74px;
     margin: 0 70px;
+    flex-shrink: 0;
     align-items: center;
+    justify-content: space-between;
 }
 
 .header__button-account {
@@ -12,7 +14,6 @@
     height: 32px;
     display: flex;
     padding: 0;
-    margin-left: auto;
     background-color: #FFFFFF;
     border: 2px solid rgba(170, 170, 170, 0.2);
     border-radius: 50px;
@@ -22,6 +23,10 @@
     color: inherit;
     text-decoration: none;
     transition: opacity ease-in-out 0.2s;
+}
+
+.header__button-account_hidden {
+    display: none;
 }
 
 .header__button-account:hover {
@@ -40,8 +45,17 @@
     height: 14px;
 }
 
-.header__link {
+.header__navbar {
     margin-left: auto;
+    display: flex;
+    align-items: center;
+}
+
+.header__navbar_hidden {
+    display: none;
+}
+
+.header__link {
     font-weight: 500;
     font-size: 12px;
     line-height: 16px;
@@ -79,6 +93,10 @@
     display: none;
 }
 
+.header__menu_hidden {
+    display: none;
+}
+
 .header__menu:hover {
     opacity: .7;
 }
@@ -89,6 +107,9 @@
     }
     .header__menu {
         display: block;
+    }
+    .header__menu_hidden {
+        display: none;
     }
     .header__button-account {
         display: none;

@@ -3,10 +3,10 @@ import MoviesCardList from "../MoviesCardList/MoviesCardList";
 
 function Movies() {
     return (
-        <main className="movies-content">
+        <main className="movies-content" aria-label="Фильмы">
             <SearchForm />
             <MoviesCardList />
-            <button className="movies-content__loadBtn">Ещё</button>
+            <button type="button" className="movies-content__loadBtn">Ещё</button>
         </main>
     )
 }

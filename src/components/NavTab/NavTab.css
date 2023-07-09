@@ -1,5 +1,4 @@
 .nav-tab {
-    justify-self: flex-end;
     margin-bottom: 30px;
     display: flex;
     column-gap: 10px;
@@ -7,7 +6,7 @@
 
 .nav-tab__link {
     width: 96px;
-    height: 36px;
+    min-height: 36px;
     background: #E8E8E8;
     border-radius: 10px;
     text-decoration: none;

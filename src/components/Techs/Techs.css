@@ -28,6 +28,7 @@
 .techs__list {
     padding: 0;
     margin: 100px auto;
+    width: 100%;
     display: flex;
     justify-content: center;
     flex-direction: row;
@@ -46,8 +47,9 @@
     letter-spacing: -0.04em;
     background: #E8E8E8;
     border-radius: 10px;
-    width: 90px;
-    height: 60px;
+    max-width: 90px;
+    width: 100%;
+    min-height: 60px;
 }
 
 @media screen and (max-width: 830px) {
@@ -68,8 +70,8 @@
         flex-wrap: wrap;
     }
     .techs__list-item {
-        width: 84px;
-        height: 57px;
+        max-width: 84px;
+        min-height: 57px;
     }
 }
 
@@ -91,7 +93,7 @@
     }
     .techs__list {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, minmax(84px, max-content));
         grid-gap: 10px;
         margin: 50px auto 70px;
     }

@@ -1,6 +1,6 @@
 import Subtitle from "../Subtitle/Subtitle";
 import {Link} from "react-router-dom";
-import photo from "../../../images/photo.jpg";
+import photo from "../../images/photo.jpg";
 
 function AboutMe() {
     return (

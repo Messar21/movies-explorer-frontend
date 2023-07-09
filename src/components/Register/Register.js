@@ -20,10 +20,14 @@ function Register() {
         setPassword(e.target.value);
     }
 
+    function handleRegister(e) {
+        e.preventDefault();
+    }
+
     return (
         <main className="register">
-            <FormBlank heading="Добро пожаловать!" submit="Зарегистрироваться" linkGrey="Уже зарегистрированы?"
-                       link="Войти" formName="register" linkPath="/signin">
+            <FormBlank heading="Добро пожаловать!" submitText="Зарегистрироваться" linkGreyText="Уже зарегистрированы?"
+                       linkText="Войти" formName="register" linkPath="/signin" onSubmit={handleRegister}>
                 <FormSection header="Имя" onChange={handleNameChange} type="text"
                           name="name" value={name} minLength="2" maxLength="40" id="name-input" />
                 <FormSection header="E-mail" onChange={handleEmailChange} type="email"

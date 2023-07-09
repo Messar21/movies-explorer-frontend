@@ -1,4 +1,4 @@
-.movies__card {
+.card {
     background: #FDFDFD;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
     border-radius: 6px;
@@ -6,7 +6,7 @@
     flex-direction: column;
 }
 
-.movies__header {
+.card__header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -15,14 +15,14 @@
     margin: 0 18px 0;
 }
 
-.movies__name {
+.card__name {
     margin: 0;
     font-weight: 500;
     font-size: 15px;
     line-height: 18px;
 }
 
-.movies__duration {
+.card__duration {
     margin: 0 ;
     font-weight: 400;
     font-size: 13px;
@@ -31,13 +31,13 @@
     color: #A0A0A0;
 }
 
-.movies__image {
+.card__image {
     max-height: 200px;
     width: 100%;
     object-fit: cover;
 }
 
-.movies__button {
+.card__button {
     max-width: 100px;
     min-height: 29px;
     width: 100%;
@@ -54,39 +54,39 @@
     transition: opacity ease-in-out 0.2s;
 }
 
-.movies__button:hover {
+.card__button:hover {
     opacity: .7;
 }
 
-.movies__button_type_saved {
+.card__button_type_saved {
     background: url(../../images/saved-button.svg) no-repeat center #FF4062;
 }
 
-.movies__button_type_delete {
+.card__button_type_delete {
     background: url(../../images/delete-button.svg) no-repeat center #F9F9F9;
 }
 
 @media screen and (max-width: 768px) {
-    .movies__image {
+    .card__image {
         max-height: 190px;
     }
 }
 
 @media screen and (max-width: 425px) {
-    .movies__name {
+    .card__name {
         font-size: 12px;
     }
-    .movies__duration {
+    .card__duration {
         font-size: 10px;
     }
-    .movies__header {
+    .card__header {
         min-height: 46px;
         margin: 0 14px 0;
     }
-    .movies__button {
+    .card__button {
         margin: 14px auto;
     }
-    .movies__image {
+    .card__image {
         max-height: 168px;
     }
 }

@@ -1,0 +1,131 @@
+.header {
+    display: flex;
+    flex-direction: row;
+    max-width: 1280px;
+    min-height: 74px;
+    margin: 0 70px;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header__button-account {
+    width: 100px;
+    height: 32px;
+    display: flex;
+    padding: 0;
+    background-color: #FFFFFF;
+    border: 2px solid rgba(170, 170, 170, 0.2);
+    border-radius: 50px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: inherit;
+    text-decoration: none;
+    transition: opacity ease-in-out 0.2s;
+}
+
+.header__button-account_hidden {
+    display: none;
+}
+
+.header__button-account:hover {
+    opacity: .7;
+}
+
+.header__button-name {
+    margin: 0 0 0 7px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+}
+
+.header__button-icon {
+    width: 12px;
+    height: 14px;
+}
+
+.header__navbar {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
+
+.header__navbar_hidden {
+    display: none;
+}
+
+.header__link {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+    transition: opacity ease-in-out 0.2s;
+}
+
+.header__link:hover {
+    opacity: .7;
+}
+
+.header__link_type_login {
+    width: 76px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #000000;
+    color: #FFFFFF;
+    border-radius: 3px;
+    margin-left: 30px;
+}
+
+.header__menu {
+    background: url("../../images/burgerMenu.svg") no-repeat center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    margin-left: auto;
+    border: none;
+    cursor: pointer;
+    transition: opacity ease-in-out 0.2s;
+    display: none;
+}
+
+.header__menu_hidden {
+    display: none;
+}
+
+.header__menu:hover {
+    opacity: .7;
+}
+
+@media screen and (max-width: 768px) {
+    .header {
+        margin: 0 30px;
+    }
+    .header__menu {
+        display: block;
+    }
+    .header__menu_hidden {
+        display: none;
+    }
+    .header__button-account {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .header {
+        margin: 0 14px;
+    }
+    .header__link {
+        font-size: 10px;
+    }
+    .header__link_type_login {
+        width: 54px;
+        height: 26px;
+        margin-left: 14px;
+    }
+}

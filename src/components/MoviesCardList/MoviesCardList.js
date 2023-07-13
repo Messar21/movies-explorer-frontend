@@ -1,15 +1,22 @@
 import MoviesCard from "../MoviesCard/MoviesCard";
 
-function MoviesCardList({ deleteBtn }) {
+function MoviesCardList({ deleteBtn, list, message }) {
+
+
+
     return (
         <section aria-label="Фильмы" className="card-list">
-            <ul className="card-list__list">
-                <MoviesCard deleteBtn={deleteBtn}/>
-                <MoviesCard deleteBtn={deleteBtn}/>
-                <MoviesCard deleteBtn={deleteBtn}/>
-                <MoviesCard deleteBtn={deleteBtn}/>
-                <MoviesCard deleteBtn={deleteBtn}/>
-            </ul>
+            { list.length===0 ? <p className="card-list__message">{message}</p>
+                : <ul className="card-list__list">
+                {
+                    list.map((movieCard) => <MoviesCard key={movieCard.id}
+                                                        deleteBtn={deleteBtn}
+                                                        name={movieCard.nameRU}
+                                                        duration={movieCard.duration}
+                                                        image={`https://api.nomoreparties.co${movieCard.image.url}`}/>
+                    )
+                }
+            </ul>}
         </section>
     )
 }

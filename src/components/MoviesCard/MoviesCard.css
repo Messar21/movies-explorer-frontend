@@ -32,7 +32,7 @@
 }
 
 .card__image {
-    max-height: 200px;
+    min-height: 200px;
     width: 100%;
     object-fit: cover;
 }
@@ -68,11 +68,11 @@
 
 @media screen and (max-width: 768px) {
     .card__image {
-        max-height: 190px;
+        min-height: 190px;
     }
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 460px) {
     .card__name {
         font-size: 12px;
     }
@@ -87,6 +87,6 @@
         margin: 14px auto;
     }
     .card__image {
-        max-height: 168px;
+        min-height: 168px;
     }
 }

@@ -1,22 +1,48 @@
 import searchIcon from "../../images/search-icon.svg";
-import {useState} from "react";
-function SearchForm() {
+import {useEffect, useState} from "react";
+function SearchForm({ findMovies }) {
 
-    const [toggleBtnState, setToggleBtnState] = useState(true);
+    const [shortsFilter, setShortsFilter] = useState(false);
+    const [request, setRequest] = useState('');
 
     const handleToggle = () => {
-        toggleBtnState ? setToggleBtnState(false) : setToggleBtnState(true);
+        shortsFilter ? setShortsFilter(false) : setShortsFilter(true);
     }
+
+    function submitFindMovies (e) {
+        e.preventDefault();
+        findMovies(request, shortsFilter);
+    }
+
+    function handleChangeRequest (e) {
+        setRequest(e.target.value);
+    }
+
+    useEffect(() => {
+        if (localStorage.getItem('shortsFilter') !== null) {
+            setShortsFilter(JSON.parse(localStorage.getItem('shortsFilter')));
+        }
+        if (localStorage.getItem('request')) {
+            setRequest(localStorage.getItem('request'));
+        }
+    }, [])
+
+
 
     return (
         <div className="search">
-            <div className="search__container">
+            <form onSubmit={submitFindMovies} className="search__container">
                 <img className="search__find-icon" src={searchIcon} alt="Найти"/>
-                <input className="search__input" placeholder="Фильм"/>
-                <button className="search__findBtn" type="button">Найти</button>
-            </div>
+                <input onChange={handleChangeRequest}
+                       className="search__input"
+                       name="search-input"
+                       placeholder="Фильм"
+                       value={request || ''}
+                       pattern='^[a-zA-Zа-яА-яёЁ0-9]+$' />
+                <button className="search__findBtn" type="submit">Найти</button>
+            </form>
             <div className="search__shorts-container" onClick={handleToggle}>
-                <button className={ toggleBtnState ?
+                <button title="Короткометражки" className={ shortsFilter ?
                     "search__toggleBtn" : "search__toggleBtn search__toggleBtn_inactive" } type="button">
                 </button>
                 <p className="search__shorts">Короткометражки</p>

@@ -1,7 +1,6 @@
-import image from "../../images/movie-image.jpg";
 import {useState} from "react";
 
-function MoviesCard({ deleteBtn }) {
+function MoviesCard({ deleteBtn, name, duration, image }) {
 
     const [saveMovie, setSaveMovie] = useState(false);
 
@@ -12,8 +11,8 @@ function MoviesCard({ deleteBtn }) {
     return (
         <li className="card">
             <div className="card__header">
-                <h2 className="card__name">В погоне за Бенкси</h2>
-                <p className="card__duration">27 минут</p>
+                <h2 className="card__name">{name}</h2>
+                <p className="card__duration">{duration} минут</p>
             </div>
             <img className="card__image" src={image} alt="Обложка фильма"/>
             { deleteBtn ?

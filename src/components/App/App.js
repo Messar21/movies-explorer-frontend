@@ -13,20 +13,20 @@ import {useState} from "react";
 function App() {
 
     const [isLogged, setIsLogged] = useState(false);
-
     const navigate = useNavigate();
+
 
     const handleLogin = (e) => {
         e.preventDefault();
         setIsLogged(true);
         navigate('/movies');
-    }
+    };
 
     const handleLogout = (e) => {
         e.preventDefault();
         setIsLogged(false);
         navigate('/');
-    }
+    };
 
     const location = useLocation();
 

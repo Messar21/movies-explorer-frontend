@@ -4,18 +4,19 @@ import React from "react";
 
 function FormBlank(props) {
 
-    const error = "Что-то пошло не так..."
 
 
     return (
         <div className="form-blank__container">
             <HomeLink />
-            <form className="form-blank__form" name={ props.formName } onSubmit={ props.onSubmit }
-                  noValidate>
+            <form className="form-blank__form" name={ props.formName } onSubmit={ props.onSubmit } noValidate>
                 <h1 className="form-blank__heading">{props.heading}</h1>
-                {props.children}
-                <span className="form-blank__error">{error}</span>
-                <button className={ `form-blank__button ${props.buttonStyle}` } type="submit">
+                {[props.children]}
+                <span className={`form-blank__error ${props.buttonStyle}`}>{props.message}</span>
+                <button className={ props.isValidForm
+                                    ? `form-blank__button `
+                                    :`form-blank__button form-blank__button_type_disabled` }
+                                    type="submit" disabled={!props.isValidForm}>
                     {props.submitText}
                 </button>
                 <Link to={props.linkPath} className="form-blank__link">

@@ -4,36 +4,21 @@ import {useEffect, useState} from "react";
 import {getMovies} from "../../utils/MoviesApi";
 import Preloader from "../Preloader/Preloader";
 import filterMovies from "../../utils/FilterMovies";
+import CardsCounter from "../../utils/CardsCounter";
+import ShowLoadButton from "../../utils/ShowLoadButton";
 
 function Movies() {
 
-    // const [moviesData, setMoviesData] = useState([]);
     const [isFetching, setIsFetching] = useState(false);
     const [message, setMessage] = useState('');
-    const [moviesList, setMoviesList] = useState([]);
+    const [moviesList, setMoviesList] = useState(() => {
+        const movies = JSON.parse(localStorage.getItem('showedMovies'));
+        if (movies) {
+            return movies;
+        }
+        return []
+    });
     const [loadButton, setLoadButton] = useState(false);
-    // const [filteredMovies, setFilteredMovies] = useState([]);
-
-
-
-    // const handleFindMovies= () => {
-    //     const moviesList = localStorage.getItem('moviesList');
-    //     if (!moviesList) {
-    //         setIsFetching(true);
-    //         getMovies()
-    //             .then((data) => {
-    //                 localStorage.setItem('moviesList', JSON.stringify(data));
-    //             })
-    //             .catch(() => {
-    //                 setMessage('Ничего не найдено');
-    //             })
-    //             .finally(() => {
-    //                 setIsFetching(false);
-    //             });
-    //     } else {
-    //
-    //     }
-    // }
 
     const handleFindMovies = (request, shortsFilter) => {
         const movies = JSON.parse(localStorage.getItem('movies'));
@@ -57,7 +42,7 @@ function Movies() {
         } else {
             handleFilterMovies(request, shortsFilter);
         }
-    }
+    };
 
     const handleFilterMovies = (request, shortsFilter) => {
         const movies = JSON.parse(localStorage.getItem('moviesList'));
@@ -68,40 +53,28 @@ function Movies() {
         localStorage.setItem('request', request);
         localStorage.setItem('shortsFilter', JSON.stringify(shortsFilter));
         localStorage.setItem('filteredMovies', JSON.stringify(filteredMovies));
-        setMoviesList(filteredMovies);
-    }
+        console.log(filteredMovies.length, moviesList.length);
+        setMoviesList(CardsCounter(filteredMovies, 0, false));
+    };
+
+    const showMore = () => {
+        const filteredMovies = JSON.parse(localStorage.getItem('filteredMovies'));
+        setMoviesList(CardsCounter(filteredMovies, moviesList.length, true));
+    };
 
     useEffect(() => {
-        if (JSON.parse(localStorage.getItem('filteredMovies'))) {
-            setMoviesList(JSON.parse(localStorage.getItem('filteredMovies')));
+        const filteredMovies = JSON.parse(localStorage.getItem('filteredMovies'))
+        if (filteredMovies) {
+            setLoadButton(ShowLoadButton(filteredMovies, moviesList));
+            localStorage.setItem('showedMovies', JSON.stringify(moviesList));
         }
-    }, [])
-
-    // function handleFindMovies (request) {
-    //     if (!request) {
-    //         setFilteredMovies([]);
-    //         setMoviesList(CardsCounter(moviesData, moviesList.length, false));
-    //         setLoadButton(ShowLoadButton(moviesData));
-    //     } else {
-    //         setFilteredMovies(moviesData.filter((movie) => movie.nameRU.includes(request)));
-    //         setMoviesList(CardsCounter(filteredMovies, moviesList.length, false));
-    //         setLoadButton(ShowLoadButton(filteredMovies));
-    //     }
-    // }
-    //
-    // function handleShowMore () {
-    //     filteredMovies.length === 0
-    //         ? setMoviesList(CardsCounter(moviesData, moviesList.length, true))
-    //         : setMoviesList(CardsCounter(filteredMovies, moviesList.length, true))
-    // }
-
-
+    }, [moviesList]);
 
     return (
         <main className="movies-content" aria-label="Фильмы">
             <SearchForm findMovies={handleFindMovies}/>
             { isFetching ? <Preloader/> : <MoviesCardList list={moviesList} message={message}/> }
-            <button type="button" className={ loadButton
+            <button onClick={showMore} type="button" className={ loadButton
                 ? "movies-content__loadBtn" : "movies-content__loadBtn_hidden"}>Ещё</button>
         </main>
     )

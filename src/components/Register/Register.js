@@ -11,7 +11,8 @@ function Register({ register, message, setMessage }) {
             isValidForm,
             isValidInput,
             resetForm,
-            nameInput } = useFormAndValidation({});
+            nameInput,
+            setIsValidForm } = useFormAndValidation({});
 
     useEffect(() => {
         resetForm();
@@ -20,6 +21,7 @@ function Register({ register, message, setMessage }) {
 
     function handleRegister(e) {
         e.preventDefault();
+        setIsValidForm(false);
         register(values.name, values.email, values.password);
     }
 
@@ -36,7 +38,7 @@ function Register({ register, message, setMessage }) {
                              isValidInput={nameInput === 'name' ? isValidInput : true}/>
                 <FormSection header="E-mail" onChange={handleChange} type="email"
                              name="email" value={values.email || ''} modifier="form-section__input_type_email"
-                             minLength="2" maxLength="40" id="email-input"
+                             minLength="2" maxLength="40" id="email-input" pattern='^[^\s@]+@[^\s@]+\.[^\s@]+$'
                              error={errors.email} isValidInput={nameInput === 'email' ? isValidInput : true}/>
                 <FormSection header="Пароль" onChange={handleChange} type="password"
                              name="password" value={values.password || ''}

@@ -8,7 +8,7 @@ function Profile({ logout, updateUser, message, setMessage }) {
     const [enabledSubmit, setEnabledSubmit] = useState(false);
     const currentUser = React.useContext(CurrentUserContext);
 
-    const { values, handleChange, errors, setValues, isValidForm} = useFormAndValidation({});
+    const { values, handleChange, errors, setValues, isValidForm, setIsValidForm} = useFormAndValidation({});
 
     useEffect(() => {
         setValues({
@@ -33,6 +33,7 @@ function Profile({ logout, updateUser, message, setMessage }) {
     function handleSubmit(e) {
         e.preventDefault();
         setIsEdit(false);
+        setIsValidForm(false);
         updateUser(values.name, values.email);
     }
 
@@ -56,6 +57,7 @@ function Profile({ logout, updateUser, message, setMessage }) {
                     <p className="profile__label">E-mail</p>
                     <input onChange={handleChange} placeholder="Почта" name='email' required
                            type="email" className="profile__input" minLength="2" maxLength="40"
+                           pattern='^[^\s@]+@[^\s@]+\.[^\s@]+$'
                            value={values.email || ''} disabled={!isEdit} />
                 </div>
                 <span className="profile__validation-error">{errors.email}</span>
@@ -74,7 +76,7 @@ function Profile({ logout, updateUser, message, setMessage }) {
                 <button className={ isEdit
                     ? (enabledSubmit && isValidForm
                         ? "profile__submit" : "profile__submit profile__submit_type_disabled")
-                    : "profile__submit profile__submit_type_hidden" }
+                    : "profile__submit profile__submit_type_hidden" } disabled={!(isValidForm && enabledSubmit)}
                         type="submit" onClick={handleSubmit}>Сохранить</button>
             </div>
         </main>

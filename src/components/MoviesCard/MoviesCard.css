@@ -66,6 +66,13 @@
     background: url(../../images/delete-button.svg) no-repeat center #F9F9F9;
 }
 
+.card__trailer-link {
+    cursor: pointer;
+    text-decoration: none;
+    display: flex;
+    min-height: 200px;
+}
+
 @media screen and (max-width: 768px) {
     .card__image {
         min-height: 190px;

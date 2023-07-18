@@ -11,7 +11,8 @@ function Login({ login, message, setMessage }) {
             isValidForm,
             isValidInput,
             resetForm,
-            nameInput } = useFormAndValidation({});
+            nameInput,
+            setIsValidForm } = useFormAndValidation({});
 
     useEffect(() => {
         resetForm();
@@ -20,6 +21,7 @@ function Login({ login, message, setMessage }) {
 
     function handleLogin (e) {
         e.preventDefault();
+        setIsValidForm(false);
         login(values.email, values.password);
     }
 
@@ -31,6 +33,7 @@ function Login({ login, message, setMessage }) {
                 <FormSection header="E-mail" onChange={handleChange} type="email"
                              name="email" value={values.email || ''} modifier="form-section__input_type_email"
                              minLength="2" maxLength="40" id="email-input"
+                             pattern='^[^\s@]+@[^\s@]+\.[^\s@]+$'
                              isValidInput={nameInput === 'email' ? isValidInput : true} error={errors.email} />
                 <FormSection header="Пароль" onChange={handleChange} type="password"
                              name="password" value={values.password || ''}

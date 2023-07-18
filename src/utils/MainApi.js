@@ -55,6 +55,50 @@ export const updateUser = (name, email, jwt) => {
             return getResponseData(res);
         })
 }
+export const addMovie = ({ country, director, duration, year, description,
+                             image, trailerLink, id, nameRU, nameEN },
+                         jwt) => {
+    return fetch(`${BASE_URL}/movies`, {
+        method: 'POST',
+        headers: getHeaders(jwt),
+        body: JSON.stringify({
+            country: country,
+            director: director,
+            duration: duration,
+            year: year,
+            description: description,
+            image: `https://api.nomoreparties.co${image.url}`,
+            trailerLink: trailerLink,
+            thumbnail: `https://api.nomoreparties.co${image.formats.thumbnail.url}`,
+            movieId: id,
+            nameRU: nameRU,
+            nameEN: nameEN
+        })
+    })
+        .then(res => {
+            return getResponseData(res);
+        })
+}
+
+export const getMovies = (jwt) => {
+    return fetch(`${BASE_URL}/movies`, {
+        method: 'GET',
+        headers: getHeaders(jwt),
+    })
+        .then(res => {
+            return getResponseData(res);
+        })
+}
+
+export const deleteMovie = (movieId, jwt) => {
+    return fetch(`${BASE_URL}/movies/${movieId}`, {
+        method: 'DELETE',
+        headers: getHeaders(jwt),
+    })
+        .then(res => {
+            return getResponseData(res);
+        })
+}
 
 function getResponseData(res){
     if(!res.ok) {

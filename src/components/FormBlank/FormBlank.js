@@ -4,8 +4,6 @@ import React from "react";
 
 function FormBlank(props) {
 
-
-
     return (
         <div className="form-blank__container">
             <HomeLink />

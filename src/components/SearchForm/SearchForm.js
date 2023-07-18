@@ -1,16 +1,22 @@
 import searchIcon from "../../images/search-icon.svg";
 import {useEffect, useState} from "react";
+
 function SearchForm({ findMovies }) {
 
     const [shortsFilter, setShortsFilter] = useState(false);
     const [request, setRequest] = useState('');
+    const [isSubmitted, setIsSubmitted] = useState(false);
 
     const handleToggle = () => {
         shortsFilter ? setShortsFilter(false) : setShortsFilter(true);
+        if (isSubmitted) {
+            findMovies(request, !shortsFilter);
+        }
     }
 
     function submitFindMovies (e) {
         e.preventDefault();
+        setIsSubmitted(true);
         findMovies(request, shortsFilter);
     }
 

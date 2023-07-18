@@ -7,7 +7,7 @@ import filterMovies from "../../utils/FilterMovies";
 import CardsCounter from "../../utils/CardsCounter";
 import ShowLoadButton from "../../utils/ShowLoadButton";
 
-function Movies() {
+function Movies ({ onMovieSave, onMovieDelete }) {
 
     const [isFetching, setIsFetching] = useState(false);
     const [message, setMessage] = useState('');
@@ -20,6 +20,7 @@ function Movies() {
     });
     const [loadButton, setLoadButton] = useState(false);
 
+
     const handleFindMovies = (request, shortsFilter) => {
         const movies = JSON.parse(localStorage.getItem('movies'));
         if (!movies) {
@@ -29,7 +30,8 @@ function Movies() {
                     localStorage.setItem('movies', JSON.stringify(data));
                 })
                 .then(() => {
-                    handleFilterMovies(request, shortsFilter);
+                    const movies = JSON.parse(localStorage.getItem('movies'));
+                    handleFilterMovies(movies, request, shortsFilter);
                 })
                 .catch(() => {
                     setMessage('Во время запроса произошла ошибка.' +
@@ -40,12 +42,11 @@ function Movies() {
                     setIsFetching(false);
                 });
         } else {
-            handleFilterMovies(request, shortsFilter);
+            handleFilterMovies(movies, request, shortsFilter);
         }
     };
 
-    const handleFilterMovies = (request, shortsFilter) => {
-        const movies = JSON.parse(localStorage.getItem('moviesList'));
+    const handleFilterMovies = (movies, request, shortsFilter) => {
         const filteredMovies = filterMovies(movies, request, shortsFilter);
         if (filteredMovies.length === 0) {
             setMessage('Ничего не найдено');
@@ -53,7 +54,6 @@ function Movies() {
         localStorage.setItem('request', request);
         localStorage.setItem('shortsFilter', JSON.stringify(shortsFilter));
         localStorage.setItem('filteredMovies', JSON.stringify(filteredMovies));
-        console.log(filteredMovies.length, moviesList.length);
         setMoviesList(CardsCounter(filteredMovies, 0, false));
     };
 
@@ -72,10 +72,14 @@ function Movies() {
 
     return (
         <main className="movies-content" aria-label="Фильмы">
-            <SearchForm findMovies={handleFindMovies}/>
-            { isFetching ? <Preloader/> : <MoviesCardList list={moviesList} message={message}/> }
-            <button onClick={showMore} type="button" className={ loadButton
-                ? "movies-content__loadBtn" : "movies-content__loadBtn_hidden"}>Ещё</button>
+            <SearchForm findMovies={ handleFindMovies }/>
+            { isFetching ? <Preloader/> : <MoviesCardList list={ moviesList }
+                                                          message={ message }
+                                                          onMovieSave={ onMovieSave }
+                                                          onMovieDelete={ onMovieDelete }/> }
+            <button onClick={ showMore } type="button" className={ loadButton
+                ? "movies-content__loadBtn" : "movies-content__loadBtn_hidden" }>Ещё
+            </button>
         </main>
     )
 }

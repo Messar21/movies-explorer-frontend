@@ -12,8 +12,9 @@ import {useEffect, useState} from "react";
 import * as api from "../../utils/MainApi";
 import {CurrentUserContext} from "../../contexts/CurrentUserContext";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
+import {addMovie, deleteMovie} from "../../utils/MainApi";
 
-function App() {
+function App () {
 
     const [isLogged, setIsLogged] = useState(false);
     const [currentUser, setCurrentUser] = useState({});
@@ -31,8 +32,7 @@ function App() {
     const checkToken = (jwt) => {
         api.getUser(jwt)
             .then((user) => {
-                if (user){
-                    console.log(user);
+                if (user) {
                     setCurrentUser(user);
                     setIsLogged(true);
                 }
@@ -50,7 +50,7 @@ function App() {
                         if (token) {
                             localStorage.setItem('jwt', token);
                             setIsLogged(true);
-                            navigate('/movies', {replace: true});
+                            navigate('/movies', { replace: true });
                         }
                     })
                     .catch((err) => {
@@ -59,7 +59,7 @@ function App() {
             })
             .catch((err) => {
                 console.log(err);
-                if(err.message === 'Validation failed') {
+                if (err.message === 'Validation failed') {
                     setMessage(err.validation.body.message);
                 } else {
                     setMessage(err.message);
@@ -74,11 +74,11 @@ function App() {
                 if (token) {
                     localStorage.setItem('jwt', token);
                     setIsLogged(true);
-                    navigate('/movies', {replace: true});
+                    navigate('/movies', { replace: true });
                 }
             })
             .catch((err) => {
-                if(err.message === 'Validation failed') {
+                if (err.message === 'Validation failed') {
                     setMessage(err.validation.body.message);
                 } else {
                     setMessage(err.message);
@@ -94,7 +94,7 @@ function App() {
                 setMessage('Данные успешно обновлены!');
             })
             .catch((err) => {
-                if(err.message === 'Validation failed') {
+                if (err.message === 'Validation failed') {
                     setMessage(err.validation.body.message);
                 } else {
                     setMessage(err.message);
@@ -103,46 +103,54 @@ function App() {
     }
 
     const handleLogout = () => {
-        localStorage.removeItem('jwt');
-        localStorage.removeItem('movies');
-        localStorage.removeItem('showedMovies');
-        localStorage.removeItem('request');
-        localStorage.removeItem('shortsFilter');
-        localStorage.removeItem('filteredMovies');
+        localStorage.clear();
         setIsLogged(false);
-        navigate('/', {replace: true});
+        navigate('/', { replace: true });
+    };
+
+    const handleSaveMovie = (movie) => {
+        const jwt = localStorage.getItem('jwt');
+        return addMovie(movie, jwt)
+    };
+
+    const handleMovieDelete = (movieId) => {
+        const jwt = localStorage.getItem('jwt');
+        return deleteMovie(movieId, jwt)
     };
 
     return (
-        <CurrentUserContext.Provider value={currentUser}>
+        <CurrentUserContext.Provider value={ currentUser }>
             <div className="App">
-                {(location.pathname === "/" || location.pathname === "/movies" || location.pathname === "/saved-movies"
-                    || location.pathname === "/profile") && <Header isLogged={isLogged}/>}
+                { (location.pathname === "/" || location.pathname === "/movies" || location.pathname === "/saved-movies"
+                    || location.pathname === "/profile") && <Header isLogged={ isLogged }/> }
                 <Routes>
-                    <Route path="/" element={<Main/>}/>
-                    <Route path="/movies" element={<ProtectedRoute element={Movies}
-                                                                   isLogged={isLogged} />} />
-                    <Route path="/saved-movies" element={<ProtectedRoute element={SavedMovies}
-                                                                         isLogged={isLogged} />} />
-                    <Route path="/profile" element={ <ProtectedRoute element={Profile}
-                                                                     logout={handleLogout}
-                                                                     updateUser={handleUpdateUser}
-                                                                     message={message}
-                                                                     isLogged={isLogged}
-                                                                     setMessage={setMessage} />} />
-                    <Route path="/signin" element={<Login login={handleLogin}
-                                                          message={message}
-                                                          setMessage={setMessage} />}/>
-                    <Route path="/signup" element={<Register register={handleRegister}
-                                                             message={message}
-                                                             setMessage={setMessage} />}/>
-                    <Route path="*" element={<NotFoundPage/>}/>
+                    <Route path="/" element={ <Main/> }/>
+                    <Route path="/movies" element={ <ProtectedRoute element={ Movies }
+                                                                    isLogged={ isLogged }
+                                                                    onMovieSave={ handleSaveMovie }
+                                                                    onMovieDelete={ handleMovieDelete }/> }/>
+                    <Route path="/saved-movies" element={ <ProtectedRoute element={ SavedMovies }
+                                                                          isLogged={ isLogged }
+                                                                          onMovieDelete={ handleMovieDelete }/> }/>
+                    <Route path="/profile" element={ <ProtectedRoute element={ Profile }
+                                                                     logout={ handleLogout }
+                                                                     updateUser={ handleUpdateUser }
+                                                                     message={ message }
+                                                                     isLogged={ isLogged }
+                                                                     setMessage={ setMessage }/> }/>
+                    <Route path="/signin" element={ <Login login={ handleLogin }
+                                                           message={ message }
+                                                           setMessage={ setMessage }/> }/>
+                    <Route path="/signup" element={ <Register register={ handleRegister }
+                                                              message={ message }
+                                                              setMessage={ setMessage }/> }/>
+                    <Route path="*" element={ <NotFoundPage/> }/>
                 </Routes>
-                {(location.pathname === "/" || location.pathname === "/movies" || location.pathname === "/saved-movies")
-                    && <Footer/>}
+                { (location.pathname === "/" || location.pathname === "/movies" || location.pathname === "/saved-movies")
+                    && <Footer/> }
             </div>
         </CurrentUserContext.Provider>
-  );
+    );
 }
 
 export default App;

@@ -62,6 +62,9 @@ function App () {
                             setIsLogged(true);
                         }
                     })
+                    .then(() => {
+                        navigate('/movies', {replace: true});
+                    })
                     .catch((err) => {
                         console.log(err)
                     })
@@ -84,6 +87,9 @@ function App () {
                     localStorage.setItem('jwt', token);
                     setIsLogged(true);
                 }
+            })
+            .then(() => {
+                navigate('/movies', {replace: true});
             })
             .catch((err) => {
                 if (err.message === 'Validation failed') {

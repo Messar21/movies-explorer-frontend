@@ -7,7 +7,7 @@ function SearchForm({ findMovies, isSavedMovies }) {
     const [request, setRequest] = useState('');
 
     const handleToggle = () => {
-        if (localStorage.getItem('shortsFilter') !== null) {
+        if (localStorage.getItem('shortsFilter') !== null || isSavedMovies) {
             findMovies(request, !shortsFilter);
         }
         shortsFilter ? setShortsFilter(false) : setShortsFilter(true);

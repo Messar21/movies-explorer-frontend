@@ -8,7 +8,7 @@ import Register from '../Register/Register';
 import SavedMovies from '../SavedMovies/SavedMovies';
 import {Route, Routes, useLocation, useNavigate} from "react-router-dom";
 import NotFoundPage from "../NotFoundPage/NotFoundPage";
-import {useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import * as api from "../../utils/MainApi";
 import {CurrentUserContext} from "../../contexts/CurrentUserContext";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
@@ -21,15 +21,10 @@ function App () {
     const [message, setMessage] = useState('');
     const navigate = useNavigate();
     const location = useLocation();
+    const currentLocation = useRef(location.pathname);
+    const currentNavigate = useRef(useNavigate());
 
-    useEffect(() => {
-        const jwt = localStorage.getItem('jwt');
-        if (jwt) {
-            checkToken(jwt);
-        }
-    }, [isLogged])
-
-    const checkToken = (jwt) => {
+    const checkToken =  (jwt) => {
         api.getUser(jwt)
             .then((user) => {
                 if (user) {
@@ -37,10 +32,25 @@ function App () {
                     setIsLogged(true);
                 }
             })
+            .then(() => {
+                console.log(currentLocation.current);
+                if (currentLocation.current === '/signin' || currentLocation.current === '/signup') {
+                    currentNavigate.current('/movies', {replace: true});
+                } else {
+                    currentNavigate.current(currentLocation.current);
+                }
+            })
             .catch((error) => {
                 console.log(error);
             });
-    }
+    };
+
+    useEffect(() => {
+        const jwt = localStorage.getItem('jwt');
+        if (jwt) {
+            checkToken(jwt);
+        }
+    }, [isLogged]);
 
     const handleRegister = (name, email, password) => {
         api.register(name, email, password)
@@ -50,7 +60,6 @@ function App () {
                         if (token) {
                             localStorage.setItem('jwt', token);
                             setIsLogged(true);
-                            navigate('/movies', { replace: true });
                         }
                     })
                     .catch((err) => {
@@ -74,7 +83,6 @@ function App () {
                 if (token) {
                     localStorage.setItem('jwt', token);
                     setIsLogged(true);
-                    navigate('/movies', { replace: true });
                 }
             })
             .catch((err) => {
@@ -128,23 +136,27 @@ function App () {
                     <Route path="/movies" element={ <ProtectedRoute element={ Movies }
                                                                     isLogged={ isLogged }
                                                                     onMovieSave={ handleSaveMovie }
-                                                                    onMovieDelete={ handleMovieDelete }/> }/>
+                                                                    onMovieDelete={ handleMovieDelete } /> } />
                     <Route path="/saved-movies" element={ <ProtectedRoute element={ SavedMovies }
                                                                           isLogged={ isLogged }
-                                                                          onMovieDelete={ handleMovieDelete }/> }/>
+                                                                          onMovieDelete={ handleMovieDelete } /> } />
                     <Route path="/profile" element={ <ProtectedRoute element={ Profile }
                                                                      logout={ handleLogout }
                                                                      updateUser={ handleUpdateUser }
                                                                      message={ message }
                                                                      isLogged={ isLogged }
-                                                                     setMessage={ setMessage }/> }/>
-                    <Route path="/signin" element={ <Login login={ handleLogin }
-                                                           message={ message }
-                                                           setMessage={ setMessage }/> }/>
-                    <Route path="/signup" element={ <Register register={ handleRegister }
-                                                              message={ message }
-                                                              setMessage={ setMessage }/> }/>
-                    <Route path="*" element={ <NotFoundPage/> }/>
+                                                                     setMessage={ setMessage } /> } />
+                    <Route path="/signin" element={ <ProtectedRoute element={ Login }
+                                                                    login={ handleLogin }
+                                                                    message={ message }
+                                                                    setMessage={ setMessage }
+                                                                    isLogged={!isLogged} /> } />
+                    <Route path="/signup" element={ <ProtectedRoute element={ Register }
+                                                                    register={ handleRegister }
+                                                                    message={ message }
+                                                                    setMessage={ setMessage }
+                                                                    isLogged={!isLogged} />  } />
+                    <Route path="*" element={ <NotFoundPage /> }/>
                 </Routes>
                 { (location.pathname === "/" || location.pathname === "/movies" || location.pathname === "/saved-movies")
                     && <Footer/> }

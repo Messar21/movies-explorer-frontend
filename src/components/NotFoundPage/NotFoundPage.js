@@ -5,7 +5,7 @@ function NotFoundPage() {
     const navigate = useNavigate();
 
     function goBack() {
-        navigate(-1);
+            setInterval(() => navigate(-1), 200);
     }
 
     return (

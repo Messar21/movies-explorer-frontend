@@ -15,8 +15,11 @@ function Profile({ logout, updateUser, message, setMessage }) {
             name: currentUser.name,
             email: currentUser.email
         });
+    }, [currentUser, setValues]);
+
+    useEffect(() => {
         setMessage('');
-    }, [currentUser, setValues, setMessage]);
+    }, [setMessage]);
 
     useEffect(() => {
         if (currentUser.name === values.name && currentUser.email === values.email) {
@@ -28,6 +31,7 @@ function Profile({ logout, updateUser, message, setMessage }) {
 
     function handleEdit() {
         setIsEdit(true);
+        setMessage('');
     }
 
     function handleSubmit(e) {
@@ -39,7 +43,7 @@ function Profile({ logout, updateUser, message, setMessage }) {
 
     return (
         <main className="profile">
-            <form className="profile__container" noValidate>
+            <form className="profile__container" onSubmit={handleSubmit} noValidate>
                 <h1 className="profile__header">Привет, {currentUser.name}!</h1>
                 <div className="profile__item">
                     <p className="profile__label">Имя</p>
@@ -61,6 +65,7 @@ function Profile({ logout, updateUser, message, setMessage }) {
                            value={values.email || ''} disabled={!isEdit} />
                 </div>
                 <span className="profile__validation-error">{errors.email}</span>
+                <button className="profile__submit profile__submit_type_hidden" type="submit"></button>
             </form>
             <div className="profile__buttons">
                 <span className="profile__error-message">{message}</span>

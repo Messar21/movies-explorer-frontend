@@ -44,7 +44,7 @@ function SavedMovies ({ onMovieDelete }) {
 
     return (
         <main className="movies-content" aria-label="Сохраненные фильмы">
-            <SearchForm findMovies={ handleFilterMovies }/>
+            <SearchForm findMovies={ handleFilterMovies } isSavedMovies={true}/>
             <MoviesCardList deleteBtn={ true }
                             list={ savedMovies }
                             message={ message }

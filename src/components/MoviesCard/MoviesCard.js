@@ -1,5 +1,6 @@
 import {useState} from "react";
 import {Link} from "react-router-dom";
+import MovieTimer from "../../utils/MovieTimer";
 
 function MoviesCard ({ onMovieSave, deleteBtn, movieCard, image, onMovieDelete }) {
 
@@ -13,7 +14,6 @@ function MoviesCard ({ onMovieSave, deleteBtn, movieCard, image, onMovieDelete }
     const handleClickSave = () => {
         onMovieSave(movieCard)
             .then((savedMovie) => {
-                console.log(movieCard.id);
                 setSavedButton(true);
                 localStorage.setItem(`savedButton${ movieCard.id }`, JSON.stringify(true));
                 setSavedMovieId(savedMovie._id);
@@ -25,11 +25,9 @@ function MoviesCard ({ onMovieSave, deleteBtn, movieCard, image, onMovieDelete }
     };
 
     const handleClickDelete = () => {
-        console.log(savedMovieId);
         onMovieDelete(savedMovieId)
             .then(() => {
                 setSavedButton(false);
-                console.log(movieCard.id);
                 localStorage.removeItem(`savedMovie${ movieCard.id }`);
                 localStorage.removeItem(`savedButton${ movieCard.id }`);
             })
@@ -39,11 +37,9 @@ function MoviesCard ({ onMovieSave, deleteBtn, movieCard, image, onMovieDelete }
     };
 
     const handleSavedMovieDelete = () => {
-        console.log(movieCard._id);
         onMovieDelete(movieCard._id)
             .then(() => {
                 localStorage.removeItem(`savedMovie${ movieCard.movieId }`);
-                console.log(movieCard.movieId);
                 localStorage.removeItem(`savedButton${ movieCard.movieId }`);
             })
             .catch((err) => {
@@ -55,7 +51,7 @@ function MoviesCard ({ onMovieSave, deleteBtn, movieCard, image, onMovieDelete }
         <li className="card">
             <div className="card__header">
                 <h2 className="card__name">{ movieCard.nameRU }</h2>
-                <p className="card__duration">{ movieCard.duration } минут</p>
+                <p className="card__duration">{ MovieTimer(movieCard.duration) }</p>
             </div>
             <Link to={ movieCard.trailerLink } className="card__trailer-link" target="_blank">
                 <img className="card__image"

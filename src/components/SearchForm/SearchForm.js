@@ -1,22 +1,20 @@
 import searchIcon from "../../images/search-icon.svg";
 import {useEffect, useState} from "react";
 
-function SearchForm({ findMovies }) {
+function SearchForm({ findMovies, isSavedMovies }) {
 
     const [shortsFilter, setShortsFilter] = useState(false);
     const [request, setRequest] = useState('');
-    const [isSubmitted, setIsSubmitted] = useState(false);
 
     const handleToggle = () => {
-        shortsFilter ? setShortsFilter(false) : setShortsFilter(true);
-        if (isSubmitted) {
+        if (localStorage.getItem('shortsFilter') !== null) {
             findMovies(request, !shortsFilter);
         }
+        shortsFilter ? setShortsFilter(false) : setShortsFilter(true);
     }
 
     function submitFindMovies (e) {
         e.preventDefault();
-        setIsSubmitted(true);
         findMovies(request, shortsFilter);
     }
 
@@ -25,13 +23,13 @@ function SearchForm({ findMovies }) {
     }
 
     useEffect(() => {
-        if (localStorage.getItem('shortsFilter') !== null) {
+        if (localStorage.getItem('shortsFilter') !== null && !isSavedMovies) {
             setShortsFilter(JSON.parse(localStorage.getItem('shortsFilter')));
         }
-        if (localStorage.getItem('request')) {
+        if (localStorage.getItem('request') && !isSavedMovies) {
             setRequest(localStorage.getItem('request'));
         }
-    }, [])
+    }, [isSavedMovies])
 
 
 

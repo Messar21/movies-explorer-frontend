@@ -15,6 +15,9 @@ function SavedMovies ({ onMovieDelete }) {
             .then((movies) => {
                 localStorage.setItem('filteredSavedMovies', JSON.stringify(movies));
                 setSavedMovies(movies);
+                if (movies.length === 0) {
+                    setMessage('Ничего не найдено');
+                }
                 movies.forEach((movie) => {
                     localStorage.setItem(`savedButton${ movie.movieId }`, JSON.stringify(true));
                     localStorage.setItem(`savedMovie${ movie.movieId }`, JSON.stringify(movie._id));

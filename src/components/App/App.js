@@ -33,12 +33,7 @@ function App () {
                 }
             })
             .then(() => {
-                console.log(currentLocation.current);
-                if (currentLocation.current === '/signin' || currentLocation.current === '/signup') {
-                    currentNavigate.current('/movies', {replace: true});
-                } else {
-                    currentNavigate.current(currentLocation.current);
-                }
+                currentNavigate.current(currentLocation.current, {replace: true});
             })
             .catch((error) => {
                 console.log(error);
@@ -60,10 +55,8 @@ function App () {
                         if (token) {
                             localStorage.setItem('jwt', token);
                             setIsLogged(true);
+                            currentLocation.current = '/movies';
                         }
-                    })
-                    .then(() => {
-                        navigate('/movies', {replace: true});
                     })
                     .catch((err) => {
                         console.log(err)
@@ -86,10 +79,8 @@ function App () {
                 if (token) {
                     localStorage.setItem('jwt', token);
                     setIsLogged(true);
+                    currentLocation.current = '/movies';
                 }
-            })
-            .then(() => {
-                navigate('/movies', {replace: true});
             })
             .catch((err) => {
                 if (err.message === 'Validation failed') {

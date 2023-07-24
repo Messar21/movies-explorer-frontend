@@ -109,13 +109,37 @@
     opacity: 0.8;
 }
 
-.profile__submit_hidden {
+.profile__submit_type_hidden {
     display: none;
+}
+
+.profile__submit_type_disabled {
+    background-color: #F8F8F8;
+    color: #C2C2C2;
+    cursor: default;
 }
 
 .profile__button_type_logout {
     color: #FF4062;
     font-weight: 500;
+}
+
+.profile__validation-error {
+    max-width: 410px;
+    width: 100%;
+    text-align: right;
+    font-size: 10px;
+    line-height: 12px;
+    color: #FF4062;
+}
+
+.profile__error-message {
+    color: #FF004C;
+    margin-bottom: 4px;
+    text-align: center;
+    font-size: 11px;
+    line-height: 13px;
+    font-weight: 400;
 }
 
 @media screen and (max-width: 768px) {

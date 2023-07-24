@@ -12,11 +12,12 @@
     justify-content: space-between;
     align-items: center;
     min-height: 54px;
+    flex-shrink: 0;
     margin: 0 18px 0;
 }
 
 .card__name {
-    margin: 0;
+    margin: 0 5px 0 0;
     font-weight: 500;
     font-size: 15px;
     line-height: 18px;
@@ -27,14 +28,16 @@
     font-weight: 400;
     font-size: 13px;
     line-height: 18px;
+    flex-shrink: 0;
     text-align: right;
     color: #A0A0A0;
 }
 
 .card__image {
-    max-height: 200px;
+    min-height: 168px;
     width: 100%;
     object-fit: cover;
+    height: 100%;
 }
 
 .card__button {
@@ -66,16 +69,21 @@
     background: url(../../images/delete-button.svg) no-repeat center #F9F9F9;
 }
 
-@media screen and (max-width: 768px) {
-    .card__image {
-        max-height: 190px;
-    }
+.card__trailer-link {
+    cursor: pointer;
+    text-decoration: none;
+    display: flex;
+    min-height: 168px;
+    height: 100%;
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 600px) {
     .card__name {
         font-size: 12px;
     }
+}
+
+@media screen and (max-width: 460px) {
     .card__duration {
         font-size: 10px;
     }
@@ -85,8 +93,5 @@
     }
     .card__button {
         margin: 14px auto;
-    }
-    .card__image {
-        max-height: 168px;
     }
 }
